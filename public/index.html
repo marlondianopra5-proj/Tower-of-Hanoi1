@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Play the Tower of Hanoi puzzle. Move every disk to the last peg without placing a larger disk on a smaller one.">
+  <title>Tower of Hanoi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./game.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./index.html" aria-label="Tower of Hanoi home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>STACK<span class="brand-light">/SHIFT</span></span>
+      </a>
+      <span class="edition">THE CLASSIC PUZZLE <span aria-hidden="true">·</span> NO. 001</span>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow"><span class="eyebrow-line"></span> A STUDY IN STRATEGY</p>
+      <h1 id="page-title">Tower of <span>Hanoi.</span></h1>
+      <p class="subtitle">One rule. Three pegs. Find your rhythm.</p>
+    </section>
+
+    <section class="game-card" aria-label="Tower of Hanoi game">
+      <div class="game-toolbar">
+        <div class="stats" aria-label="Game statistics">
+          <div class="stat">
+            <span class="stat-label">YOUR MOVES</span>
+            <strong id="move-count" class="stat-value" aria-live="polite">0</strong>
+          </div>
+          <span class="stat-divider" aria-hidden="true"></span>
+          <div class="stat">
+            <span class="stat-label">BEST POSSIBLE</span>
+            <strong id="minimum-count" class="stat-value">7</strong>
+          </div>
+        </div>
+        <div class="game-actions">
+          <label class="disk-select-label" for="disk-count">DISKS</label>
+          <select id="disk-count" aria-label="Number of disks">
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
+          <button id="restart-button" class="icon-button" type="button" aria-label="Restart game" title="Restart game">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16.4 8A6.7 6.7 0 0 0 4.7 5.2L3 7m0 0V3.5M3 7h3.5M3.6 12a6.7 6.7 0 0 0 11.7 2.8L17 13m0 0v3.5M17 13h-3.5"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="board-wrap">
+        <div id="game-board" class="game-board" role="group" aria-label="Three pegs. Select a peg with a top disk, then select where to move it.">
+          <button class="peg" type="button" data-peg="0" aria-label="Peg 1">
+            <span class="peg-number">01</span>
+            <span class="peg-visual"><span class="peg-rod"></span><span class="disks"></span></span>
+            <span class="peg-name">START</span>
+          </button>
+          <button class="peg" type="button" data-peg="1" aria-label="Peg 2">
+            <span class="peg-number">02</span>
+            <span class="peg-visual"><span class="peg-rod"></span><span class="disks"></span></span>
+            <span class="peg-name">AUXILIARY</span>
+          </button>
+          <button class="peg" type="button" data-peg="2" aria-label="Peg 3">
+            <span class="peg-number">03</span>
+            <span class="peg-visual"><span class="peg-rod"></span><span class="disks"></span></span>
+            <span class="peg-name">FINISH</span>
+          </button>
+        </div>
+        <div class="board-base" aria-hidden="true"></div>
+      </div>
+
+      <div class="game-footer">
+        <p id="game-message" class="game-message" role="status" aria-live="polite">Select a peg with a disk to begin.</p>
+        <button id="hint-button" class="hint-button" type="button">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5a5.5 5.5 0 0 0-3.5 9.7c.8.7 1.2 1.3 1.3 2.3h4.4c.1-1 .5-1.6 1.3-2.3A5.5 5.5 0 0 0 10 2.5ZM8.1 17h3.8M8.6 14.5h2.8"/></svg>
+          <span>SHOW ME A MOVE</span>
+          <span class="shortcut">H</span>
+        </button>
+      </div>
+    </section>
+
+    <footer class="how-to-play">
+      <span class="how-to-title">HOW TO PLAY</span>
+      <span class="instruction-step"><span>01</span> Select a peg with a disk</span>
+      <span class="instruction-divider" aria-hidden="true"></span>
+      <span class="instruction-step"><span>02</span> Choose a destination</span>
+      <span class="instruction-divider" aria-hidden="true"></span>
+      <span class="instruction-step"><span>03</span> Never stack big on small</span>
+    </footer>
+    <p id="connection-error" class="connection-error" role="alert" hidden>Could not reach the game server. Start Prolog with <code>swipl -s server.pl</code> and refresh.</p>
+  </main>
+</body>
+</html>
